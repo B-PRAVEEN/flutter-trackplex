@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
-  static String tag = 'loginPage';
   @override
   _LoginState createState() => new _LoginState();
 }
@@ -9,62 +8,68 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    final logo = Hero(
-        tag: 'loginpage',
-        child: new Padding(
-          padding: EdgeInsets.all(50.0),
-          child: Image.network(
-            'http://app.trackplex.com/img/logo.png',
-            width: 200.0,
-            height: 50.0,
-          ),
-        ));
-    final form = new Form(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return new Scaffold(
+      backgroundColor: Colors.black,
+      body: new Stack(
+        fit: StackFit.expand,
         children: <Widget>[
-          new TextFormField(
-            style: new TextStyle(color: Colors.white),
-            autovalidate: true,
-            decoration: new InputDecoration(
-              icon: new Icon(Icons.email),
-              labelText: "Email ID",
-              labelStyle: TextStyle(color: Colors.white),
-            ),
+          new Image(
+            image: new NetworkImage(
+                "http://backgroundcheckall.com/wp-content/uploads/2017/12/code-background-image-2.jpg"),
+            fit: BoxFit.fill,
+            color: Colors.black87,
+            colorBlendMode: BlendMode.darken,
           ),
-          new TextFormField(
-            style: new TextStyle(color: Colors.white),
-            autovalidate: true,
-            obscureText: true,
-            decoration: new InputDecoration(
-              icon: new Icon(Icons.lock_outline),
-              labelText: "Password",
-              labelStyle: TextStyle(color: Colors.white),
-            ),
-          ),
-          new Padding(
-            padding: EdgeInsets.all(20.0),
-            child: new RaisedButton.icon(
-              color: Colors.blueAccent,
-              label: new Text("Login"),
-              icon: new Icon(Icons.local_shipping),
-              onPressed: () {},
-            ),
+          new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Image(
+                image:
+                    new NetworkImage("http://app.trackplex.com/img/logo.png"),
+                fit: BoxFit.fill,
+                width: 190.0,
+              ),
+              new Form(
+                  child: new Theme(
+                data: new ThemeData(
+                    brightness: Brightness.dark,
+                    primarySwatch: Colors.red,
+                    inputDecorationTheme: new InputDecorationTheme(
+                        labelStyle: new TextStyle(color: Colors.white))),
+                child: new Container(
+                  padding: EdgeInsets.all(34.0),
+                  child: new Column(
+                    children: <Widget>[
+                      new TextFormField(
+                        decoration: new InputDecoration(
+                          labelText: "Registered Email ID",
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      new TextFormField(
+                        decoration:
+                            new InputDecoration(labelText: "Account Password"),
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: new MaterialButton(onPressed: () {},
+                         child: Text("Login"),
+                         elevation: 4.0,
+                         splashColor: Colors.blueGrey,
+                         color: Theme.of(context).accentColor,
+                         colorBrightness: Brightness.dark,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ))
+            ],
           )
         ],
       ),
-    );
-
-    return new Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-          child: new Padding(
-        padding: EdgeInsets.all(34.0),
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[logo, form],
-        ),
-      )),
     );
   }
 }

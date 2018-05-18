@@ -9,6 +9,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Welcome to Flutter',
       home: new Login(),
+      theme: new ThemeData(
+        primarySwatch: Colors.blue
+      ),
     );
   }
 }
